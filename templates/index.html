@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to 3D</title>
+
+    <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ecf0f1;
+            margin: 40px 0;
+        }
+
+        pre {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2c3e50;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome</h1>
+
+    <p>Provide prompt for 3D model</p>
+
+    <form method="POST" action="/">
+        <label for="prompt">Enter prompt:</label>
+        <input type="text" id="prompt" name="prompt" required>
+        <label for="style">Enter style:</label>
+        <input type="text" id="style" name="style" required>
+        <button type="submit" name="promptForm">Get Model id</button>
+    </form>
+
+    {% if modelID %}
+        <p>{{ modelID }}</p>
+    {% endif %}
+
+    <hr>
+
+    <p>Provide model id to generate and download 3D model</p>
+    <form method="POST" action="/">
+        <label for="modelId">Enter model ID:</label>
+        <input type="text" id="input2" name="modelId" required>
+        <button type="submit" name="ModelForm">Download Model</button>
+    </form>
+
+    {% if modelJSON %}
+        <pre> {{ modelJSON }}</pre>
+    {% endif %}
+
+</body>
+</html>
